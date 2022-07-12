@@ -13,7 +13,7 @@ const ACTION = {
 }
 
 //reducer takes state and action (for payload).
-//Don't forget to spread in current state or you'll wipe out everything.
+//Don't forget to spread in current state or you'll wipe out everything else.
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTION.INCREMENT:
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
 }
 
 function App() {
-  //initalize the call to use useReducer with state and dispatch (just like using useState's state, setState)
+  //initalize the call to use useReducer with state and dispatch (just like using useState's myState, setMyState)
   const [state, dispatch] = useReducer(reducer, { count: 0, userInput: '', color: false })
 
   return (
@@ -43,7 +43,7 @@ function App() {
       <br /><br />
       <p>{state.count}</p>
       <section>
-        <button onClick={(() => dispatch({ type: ACTION.DECREMENT }))}>-</button>
+        <button onClick={(() => dispatch({ type: ACTION.DECREMENT }))}>-</button>//dont build a local function then call it, just dispatch the reducer
         <button onClick={(() => dispatch({ type: ACTION.INCREMENT }))}>+</button>
         <button onClick={(() => dispatch({ type: ACTION.TG_COLOR }))}>Color</button>
       </section>
